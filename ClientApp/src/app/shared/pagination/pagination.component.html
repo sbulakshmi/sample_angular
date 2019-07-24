@@ -1,0 +1,12 @@
+
+  <ul class="pagination">
+    
+    <li [class.disabled]="currentPage == 1">
+        <a aria-label="Previous" (click)="previous()" ><span aria-hidden="true">&laquo;</span></a></li>
+    <li [class.active]="currentPage==page" *ngFor="let page of pages">
+        <a (click)="changePage(page)">{{page}}</a>
+    </li>
+    <li [class.disabled]="currentPage==pages.length" (click)="next()">
+      <a aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+

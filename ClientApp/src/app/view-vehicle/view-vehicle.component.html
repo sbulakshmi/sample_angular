@@ -1,0 +1,62 @@
+<h1>Vehicle</h1>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Vehicle</a></li>
+    <li role="presentation" class="active"><a href="#photos" role="tab" aria-controls="photos" data-toggle="tab">Photos</a></li>
+  </ul>
+  <!--tab panes-->
+  <div class="tab-content" *ngIf="vehicle">
+    <!--vehicle tab-->
+    <div class="tab-pane" role="tabpanel" id="basic">
+      <div class="form-group">
+        <label>Make:</label>
+        <p>{{vehicle.make.name}} <p>
+      </div>
+      <div class="form-group">
+        <label>Model:</label>
+        <p>{{vehicle.model.name}} <p>
+      </div>
+      <div class="form-group">
+        <label>Is Vehicle registered?</label>
+        <p>{{vehicle.isRegistered ? "Yes":"No"}}</p>
+      </div>
+      <h2>Features</h2>
+      <div *ngFor="let feature of vehicle.features">
+        <p>{{feature.name}}</p>
+      </div>
+      <h2>Contact</h2>
+      <div class="form-group">
+        <label> Name
+        </label>
+        <p>{{vehicle.contact.name}}</p>
+      </div>
+      <div class="form-group">
+        <label for="txtContactPhone">Phone
+        </label>
+        <p>{{vehicle.contact.phone}}</p>
+
+      </div>
+      <div class="form-group">
+        <label for="txtContactEmail">Email
+        </label>
+        <p>{{vehicle.contact.email}}</p>
+      </div>
+      <button class="btn btn-primary" (click)="editVehicle()">Edit</button>
+      <button class="btn btn-danger" type="button" (click)="deleteVehicle()">Delete</button>
+      <button class="btn" (click)="viewVehicle()">View Vehicles</button>
+
+
+    </div>
+    <!--photos tab-->
+    <div class="tab-pane active" role="tabpanel" id="photos">
+      <h2>Photos</h2>
+      <input type="file" (change)="upload()" #fileInput>
+      <div class="progress" *ngIf = "progress && progress.percentage <= 100">
+        <div class="progress-bar" [style.width.%]="progress.percentage" >
+          <span class="sr-only" >{{progress.percentage}}% Completed</span></div>
+      </div>
+      <img *ngFor="let photo of photos" src="uploads/{{photo.fileName}}" class="img-thumbnail">
+    </div>
+  </div>
+</div>

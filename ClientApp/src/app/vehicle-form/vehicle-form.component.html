@@ -1,0 +1,50 @@
+<form (submit) ="submit()" #f="ngForm">
+  <p>{{vehicle | json}}</p>
+  <div class="form-group">
+    <label for="make">Make</label>
+    <select id="make" class="form-control" (change)="fillModel()" name='selMake' [(ngModel)]="vehicle.makeId" #make="ngModel" required>
+      <option value=""></option>
+      <option *ngFor="let make of makes" value="{{make.id}}" >{{make.name}}</option>
+    </select>
+  </div>
+  <div class="alert alert-danger" *ngIf="make.touched && !make.valid ">Make field is required</div>
+<div class="form-group">
+ <label for="model">Model</label>
+  <select id="model" class="form-control" [(ngModel)]="vehicle.modelId" name='modelId'>
+    <option *ngFor="let model of models" value="{{model.id}}"  >{{model.name}}</option>
+  </select>
+</div>  
+<div class="radio">
+  <p>Is Vehicle registered?</p>
+  <label for="rdoRegistered">
+  <input id="rdoRegistered" name="registered" [value]="true" type="radio" [(ngModel)]="vehicle.isRegistered" >Yes
+  </label>
+  <label for="rdoNotRegistered">
+      <input id="rdoNotRegistered" name="registered" [value]="false" type="radio"  [(ngModel)]="vehicle.isRegistered">No
+    </label>
+</div>
+<h2>Features</h2>
+<div class="checkbox" *ngFor="let feature of features">
+  <label for="feature{{feature.id}}">
+    <input id="feature{{feature.id}}" type="checkbox" [checked]="this.vehicle.features.includes(feature.id)" (change)="onFeatureToggle(feature.id, $event)" > {{feature.name}}
+  </label>
+</div>
+<h2>Contact</h2>
+<div class="form-group">
+  <label for="txtContactName"> Name
+    <input id="txtContactName" type="text" class="form-control" [(ngModel)]="vehicle.contact.name" name="contactName">
+  </label>
+</div>
+<div class="form-group">
+    <label for="txtContactPhone">Phone
+      <input id="txtContactPhone" type="text" class="form-control" [(ngModel)]="vehicle.contact.phone" name="contactPhone">
+    </label>
+  </div>
+  <div class="form-group">
+      <label for="txtContactEmail">Email
+        <input id="txtContactEmail" type="text" class="form-control" [(ngModel)]="vehicle.contact.email" name="contactEmail">
+      </label>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid" >Save</button>
+    <button class="btn btn-danger" type="button" (click)="deleteVehicle()" *ngIf =(this.vehicle.id) >Delete</button>
+</form>
