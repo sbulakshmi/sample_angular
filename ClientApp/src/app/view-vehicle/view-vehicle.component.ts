@@ -15,7 +15,7 @@ export class ViewVehicleComponent implements OnInit {
   vehicle: Vehicle;// =  {id :0, make:{id:0, name:''}, features:[], lastUpdated:'', isRegistered:false, model:{id:0, name:''},contact:{name:'',phone:'', email:''}};
   vehicleId: number;
   photos: any[];
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   progress: any;
 
   constructor(
