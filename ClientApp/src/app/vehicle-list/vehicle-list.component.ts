@@ -1,7 +1,7 @@
 import { Vehicle, KeyValuePair, Make } from './../models/vehicle';
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../services/make.service';
-import { query } from '@angular/core/src/animation/dsl';
+//import { query } from '@angular/core/src/animation/dsl';
 
 @Component({
   selector: 'app-vehicle-list',
