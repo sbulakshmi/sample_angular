@@ -55,15 +55,15 @@ namespace asp_dotnet_core_angular
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            // if (env.IsDevelopment())
+            // {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
+            // }
+            // else
+            // {
+            //     app.UseExceptionHandler("/Error");
+            //     app.UseHsts();
+            // }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -85,7 +85,7 @@ namespace asp_dotnet_core_angular
 
                 if (env.IsDevelopment())
                 {
-                   // spa.UseAngularCliServer(npmScript: "start");
+                  // spa.UseAngularCliServer(npmScript: "start");
                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
