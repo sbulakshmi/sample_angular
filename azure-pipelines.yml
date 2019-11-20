@@ -1,4 +1,4 @@
-# ASP.NET Core
+    # ASP.NET Core
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -37,7 +37,7 @@ steps:
 #     publishWebProjects: true
 - task: efcore-migration-script-generator-task@0
   inputs:
-    projectpath: '**/*.csproj'
+    projectpath: 'asp-dotnet-core-angular.csproj'
     databasecontexts: 'VegaDbContext'
     targetfolder: '$(build.artifactstagingdirectory)/migrations'
 - task: DotNetCoreCLI@2
