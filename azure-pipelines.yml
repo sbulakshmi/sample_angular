@@ -35,6 +35,11 @@ steps:
 #   inputs:
 #     command: 'publish'
 #     publishWebProjects: true
+- task: efcore-migration-script-generator-task@0
+  inputs:
+    projectpath: '**/*.csproj'
+    databasecontexts: 'VegaDbContext'
+    targetfolder: '$(build.artifactstagingdirectory)/migrations'
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
