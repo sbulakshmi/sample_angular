@@ -24,7 +24,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
+    projects: '**/application/*.csproj'
 # - task: DotNetCoreCLI@2
 #   inputs:
 #     command: 'publish'
@@ -43,7 +43,7 @@ steps:
 
 - task: efcore-migration-script-generator-task@0
   inputs:
-    projectpath: '/application/asp-dotnet-core-angular.csproj'
+    projectpath: '**/application/asp-dotnet-core-angular.csproj'
     databasecontexts: 'VegaDbContext'
     targetfolder: '$(build.artifactstagingdirectory)/migrations'
 - task: DotNetCoreCLI@2
