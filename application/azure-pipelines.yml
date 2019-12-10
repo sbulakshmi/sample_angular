@@ -45,7 +45,7 @@ steps:
   inputs:
     projectpath: 'application/asp-dotnet-core-angular.csproj'
     databasecontexts: 'VegaDbContext'
-    targetfolder: '$(build.artifactstagingdirectory)/migrations'
+    targetfolder: '$(build.artifactstagingdirectory)/application/migrations'
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
