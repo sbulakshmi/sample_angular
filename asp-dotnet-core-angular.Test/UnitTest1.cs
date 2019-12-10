@@ -36,76 +36,76 @@ namespace asp_dotnet_core_angular
         #endregion
 
         #region snippet_VehiclesControllerTests2
-        [Fact]
-        public async Task ForVehicle_ReturnsHttpNotFound_ForInvalidVehicle()
-        {
-            // Arrange
-            int testVehicleId = 123;
-            var mockRepo = new Mock<IVehicleRepository>();
-            var mockMapper = new Mock<IMapper>();
-            var mockUOW = new Mock<IUnitOfWork>();
+        // [Fact]
+        // public async Task ForVehicle_ReturnsHttpNotFound_ForInvalidVehicle()
+        // {
+        //     // Arrange
+        //     int testVehicleId = 123;
+        //     var mockRepo = new Mock<IVehicleRepository>();
+        //     var mockMapper = new Mock<IMapper>();
+        //     var mockUOW = new Mock<IUnitOfWork>();
 
-            // mockRepo.Setup(repo => repo.GetVehicle(testVehicleId))
-            //     .ReturnsAsync((Vehicle)null);
-            var controller = new VehiclesController(mockMapper.Object, mockRepo.Object, mockUOW.Object);
+        //     // mockRepo.Setup(repo => repo.GetVehicle(testVehicleId))
+        //     //     .ReturnsAsync((Vehicle)null);
+        //     var controller = new VehiclesController(mockMapper.Object, mockRepo.Object, mockUOW.Object);
 
 
-            // Act
-            var result = await controller.GetVehicle(testVehicleId);
+        //     // Act
+        //     var result = await controller.GetVehicle(testVehicleId);
 
-            // Assert
-            Assert.IsType<NotFoundResult>(result);
-        }
-        #endregion
+        //     // Assert
+        //     Assert.IsType<NotFoundResult>(result);
+        // }
+        // #endregion
 
-        #region snippet_VehiclesControllerTests3
-        [Fact]
-        public async Task Create_ReturnsNewlyCreatedVehicle()
-        {
-            // Arrange
-            int testModelId = 2;
-            bool testIsRegistered = true;
-            string testContactName = "ab";
-            string testContactPhone = "23";
-            string testContactEmail = "sd";
-            List<int>  testFeature= new List<int>{1,2,3};
+        // #region snippet_VehiclesControllerTests3
+        // [Fact]
+        // public async Task Create_ReturnsNewlyCreatedVehicle()
+        // {
+        //     // Arrange
+        //     int testModelId = 2;
+        //     bool testIsRegistered = true;
+        //     string testContactName = "ab";
+        //     string testContactPhone = "23";
+        //     string testContactEmail = "sd";
+        //     List<int>  testFeature= new List<int>{1,2,3};
 
-            var mockRepo = new Mock<IVehicleRepository>();
-            var mockMapper = new Mock<IMapper>();
-            var mockUOW = new Mock<IUnitOfWork>();
+        //     var mockRepo = new Mock<IVehicleRepository>();
+        //     var mockMapper = new Mock<IMapper>();
+        //     var mockUOW = new Mock<IUnitOfWork>();
 
 
             
-            var controller = new VehiclesController(mockMapper.Object, mockRepo.Object, mockUOW.Object);
+        //     var controller = new VehiclesController(mockMapper.Object, mockRepo.Object, mockUOW.Object);
 
 
-            var newVehicle = new SaveVehicleResource()
-            {
-              ModelId =testModelId,
-              IsRegistered= testIsRegistered,
-              Contact = new ContactResource()
-              {
-                  Name = testContactName,
-                  Phone = testContactPhone,
-                  Email = testContactEmail
-              },
-              Features = testFeature
+        //     var newVehicle = new SaveVehicleResource()
+        //     {
+        //       ModelId =testModelId,
+        //       IsRegistered= testIsRegistered,
+        //       Contact = new ContactResource()
+        //       {
+        //           Name = testContactName,
+        //           Phone = testContactPhone,
+        //           Email = testContactEmail
+        //       },
+        //       Features = testFeature
   
-            };
-            mockRepo.Setup(repo => repo.AddVehicle(new Vehicle()))
-            .Verifiable();
+        //     };
+        //     mockRepo.Setup(repo => repo.AddVehicle(new Vehicle()))
+        //     .Verifiable();
 
-            mockUOW.Setup (uow => uow.CompleteAsync())
-            .Returns(Task.CompletedTask)
-            .Verifiable();
+        //     mockUOW.Setup (uow => uow.CompleteAsync())
+        //     .Returns(Task.CompletedTask)
+        //     .Verifiable();
 
-            // Act
-            var result = await controller.CreateVehicle(newVehicle);
+        //     // Act
+        //     var result = await controller.CreateVehicle(newVehicle);
 
-            // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result);
+        //     // Assert
+        //     var okResult = Assert.IsType<OkObjectResult>(result);
             
-          }
+        // }
 
         private object GetTestVehicle()
         {
