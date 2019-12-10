@@ -35,6 +35,12 @@ steps:
 #   inputs:
 #     command: 'publish'
 #     publishWebProjects: true
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/asp-dotnet-core-angular.Test/*.csproj'
+    #arguments: '--configuration $(buildConfiguration)'
+
 - task: efcore-migration-script-generator-task@0
   inputs:
     projectpath: 'asp-dotnet-core-angular.csproj'
