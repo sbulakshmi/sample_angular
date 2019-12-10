@@ -38,12 +38,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/asp-dotnet-core-angular.Test/*.csproj'
+    projects: 'asp-dotnet-core-angular.Test/*.csproj'
     #arguments: '--configuration $(buildConfiguration)'
 
 - task: efcore-migration-script-generator-task@0
   inputs:
-    projectpath: '**/application/asp-dotnet-core-angular.csproj'
+    projectpath: 'application/asp-dotnet-core-angular.csproj'
     databasecontexts: 'VegaDbContext'
     targetfolder: '$(build.artifactstagingdirectory)/migrations'
 - task: DotNetCoreCLI@2
